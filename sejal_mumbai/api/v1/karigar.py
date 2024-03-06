@@ -1,7 +1,7 @@
 import frappe
 
 
-# Post Karigar
+# Post Karigars
 @frappe.whitelist(allow_guest=True)
 def create_karigar(kwargs):
     try:
