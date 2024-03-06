@@ -213,3 +213,19 @@ app_license = "MIT"
 # auth_hooks = [
 # 	"sejal_mumbai.auth.validate"
 # ]
+
+
+doc_events = {
+	"Item": {
+		"before_save": "sejal_mumbai.doc_events.item.validate",
+       
+	},
+	"Purchase Receipt": {
+		"autoname": "sejal_mumbai.doc_events.purchase_receipt.autoname",
+		"validate": "sejal_mumbai.doc_events.purchase_receipt.number_set",
+	},
+	"Delivery Note": {
+		"autoname": "sejal_mumbai.doc_events.delivery_note.autoname",
+		"validate": "sejal_mumbai.doc_events.purchase_receipt.number_set",
+	},
+}
