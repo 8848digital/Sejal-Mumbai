@@ -229,3 +229,13 @@ doc_events = {
 		"validate": "sejal_mumbai.doc_events.purchase_receipt.number_set",
 	},
 }
+
+
+
+fixtures = [
+	{
+		"dt": "Custom Field",
+		"filters": [["module", "in", ["sejal_mumbai"]]],
+	},
+	{"dt": "Property Setter", "filters": [["module", "in", ["sejal_mumbai"]]]},
+]
