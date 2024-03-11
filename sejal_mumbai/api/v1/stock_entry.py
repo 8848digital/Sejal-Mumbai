@@ -139,7 +139,6 @@ def name_specific_stock_entry(kwargs):
         data = frappe.db.sql(
             f"""
             SELECT
-                
                 se.name,
                 se.posting_date,
                 se.custom_locations,
@@ -148,7 +147,8 @@ def name_specific_stock_entry(kwargs):
                 sed.s_warehouse AS source_warehouse, 
                 sed.t_warehouse AS target_warehouse,
                 sed.item_code,
-                sed.qty
+                sed.qty,
+                sed.allow_zero_valuation_rate
             FROM
                 `tabStock Entry` AS se
                 LEFT JOIN `tabStock Entry Detail` AS sed ON sed.parent = se.name
@@ -162,8 +162,7 @@ def name_specific_stock_entry(kwargs):
             as_dict=True,
         )
 
-        
-        items = [{"source_warehouse": item["source_warehouse"], "target_warehouse": item["target_warehouse"], "item_code": item["item_code"]} for item in data]
+        items = [{"source_warehouse": item["source_warehouse"], "target_warehouse": item["target_warehouse"], "item_code": item["item_code"], "qty": item["qty"], "allow_zero_valuation_rate": item["allow_zero_valuation_rate"]} for item in data]
 
         return build_response("success", data=data, items=items, exec_time="0.0008 seconds")
     except Exception as e:
@@ -188,7 +187,7 @@ def build_response(status, data=None, items=None, message=None, exec_time=None):
                 "posting_date": item["posting_date"],
                 "custom_locations": item["custom_locations"],
                 "docstatus": item["docstatus"],
-                "items": [{"idx": item["idx"], "source_warehouse": item["source_warehouse"], "target_warehouse": item["target_warehouse"], "item_code": item["item_code"]}]
+                "items": [{"idx": item["idx"], "source_warehouse": item["source_warehouse"], "target_warehouse": item["target_warehouse"], "item_code": item["item_code"], "qty": item["qty"], "allow_zero_valuation_rate": item["allow_zero_valuation_rate"]}]
             }
             modified_data.append(modified_item)
         response["data"] = modified_data

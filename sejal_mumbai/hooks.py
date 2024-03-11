@@ -247,17 +247,3 @@ fixtures = [
 ]
 
 
-# fixtures = [
-# 	{
-# 		"dt": "Custom Field",
-# 		"filters": [
-# 			[
-# 				"name",
-# 				"in",
-# 				[
-# 					"Stock Entry-custom_locations",
-# 				],
-# 			]
-# 		],
-# 	}
-# ]
