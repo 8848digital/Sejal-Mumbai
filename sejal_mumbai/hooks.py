@@ -229,8 +229,7 @@ doc_events = {
 		"validate": "sejal_mumbai.doc_events.purchase_receipt.number_set",
 	},
 }
-
-
+# All fields 
 fixtures = [
 	{
 		"dt": "Custom Field",
