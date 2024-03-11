@@ -57,13 +57,9 @@ def get_stock_entry(kwargs):
                 se.name,
                 se.posting_date,
                 se.custom_locations,
-                se.docstatus,
-                sed.s_warehouse,
-                sed.t_warehouse,
-                sed.item_code
+                se.docstatus
             FROM
                 `tabStock Entry` AS se
-                LEFT JOIN `tabStock Entry Detail` AS sed ON sed.parent = se.name
             WHERE
                 (se.docstatus = 0 or se.docstatus = 1 or se.docstatus = 2)
                 AND se.name NOT IN (SELECT amended_from FROM `tabStock Entry` WHERE amended_from IS NOT NULL)
@@ -72,20 +68,16 @@ def get_stock_entry(kwargs):
             """,
             as_dict=True,
         )
-        return build_response("success", data=data)
+        response = {
+            "status": "success",
+            "data": data
+        }
     except Exception as e:
-        frappe.log_error(title=_("API Error"), message=str(e))
-        return build_response("error", message=_("An error occurred while fetching data."))
-
-def build_response(status, data=None, message=None):
-    response = {"status": status}
-
-    if data is not None:
-        response["data"] = data
-
-    if message is not None:
-        response["message"] = message
-
+        response = {
+            "status": "error",
+            "message": str(e)
+        }
+        
     return response
 
 
@@ -137,7 +129,7 @@ def get_conditions(name=None):
     return conditions
 
 def build_response(status, data=None, items=None, message=None, exec_time=None):
-    response = {"message": {"status": status}}
+    response = {"status": status}
 
     if data is not None:
         modified_data = []
@@ -150,12 +142,12 @@ def build_response(status, data=None, items=None, message=None, exec_time=None):
                 "items": [{"idx": item["idx"], "s_warehouse": item["s_warehouse"], "t_warehouse": item["t_warehouse"], "item_code": item["item_code"]}]
             }
             modified_data.append(modified_item)
-        response["message"]["data"] = modified_data
+        response["data"] = modified_data
 
     if exec_time is not None:
-        response["message"]["exec_time"] = exec_time
+        response["exec_time"] = exec_time
 
     if message is not None:
-        response["message"]["error"] = message
+        response["error"] = message
 
     return response
