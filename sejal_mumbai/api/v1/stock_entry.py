@@ -17,8 +17,8 @@ def create_stock_entry(kwargs):
         client.stock_entry_type = stock_entry_type
 
         for item in items:
-            s_warehouse = item.get("s_warehouse")
-            t_warehouse = item.get("t_warehouse")
+            s_warehouse = item.get("source_warehouse")
+            t_warehouse = item.get("target_warehouse")
             item_code = item.get("item_code")
             qty = item.get("qty")
             allow_zero_valuation_rate = item.get("allow_zero_valuation_rate")
@@ -95,8 +95,8 @@ def name_specific_stock_entry(kwargs):
                 se.custom_locations,
                 se.docstatus,
                 sed.idx,
-                sed.s_warehouse,
-                sed.t_warehouse,
+                sed.s_warehouse AS source_warehouse, 
+                sed.t_warehouse AS target_warehouse,
                 sed.item_code,
                 sed.qty
             FROM
@@ -113,7 +113,7 @@ def name_specific_stock_entry(kwargs):
         )
 
         
-        items = [{"s_warehouse": item["s_warehouse"], "t_warehouse": item["t_warehouse"], "item_code": item["item_code"]} for item in data]
+        items = [{"source_warehouse": item["source_warehouse"], "target_warehouse": item["target_warehouse"], "item_code": item["item_code"]} for item in data]
 
         return build_response("success", data=data, items=items, exec_time="0.0008 seconds")
     except Exception as e:
@@ -138,7 +138,7 @@ def build_response(status, data=None, items=None, message=None, exec_time=None):
                 "posting_date": item["posting_date"],
                 "custom_locations": item["custom_locations"],
                 "docstatus": item["docstatus"],
-                "items": [{"idx": item["idx"], "s_warehouse": item["s_warehouse"], "t_warehouse": item["t_warehouse"], "item_code": item["item_code"]}]
+                "items": [{"idx": item["idx"], "source_warehouse": item["source_warehouse"], "target_warehouse": item["target_warehouse"], "item_code": item["item_code"]}]
             }
             modified_data.append(modified_item)
         response["data"] = modified_data
