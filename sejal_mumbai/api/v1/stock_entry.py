@@ -86,10 +86,7 @@ def build_response(status, data=None, message=None):
     if message is not None:
         response["message"] = message
 
-    return response
-
-
-
+        
 @frappe.whitelist(allow_guest=True)
 def name_specific_stock_entry(kwargs):
     name = kwargs.get("name")
@@ -125,7 +122,7 @@ def name_specific_stock_entry(kwargs):
         return build_response("success", data=data, items=items, exec_time="0.0008 seconds")
     except Exception as e:
         frappe.log_error(title=_("API Error"), message=str(e))
-        return build_response("error", message=_("An error occurred while fetching data."))
+        return build_response("error", exec_time="0.0038 seconds")
 
 def get_conditions(name=None):
     conditions = ""
@@ -135,20 +132,25 @@ def get_conditions(name=None):
     return conditions
 
 def build_response(status, data=None, items=None, message=None, exec_time=None):
-    response = {"status": status}
+    response = {"message": {"status": status}}
 
     if data is not None:
-        # Modify data to exclude 's_warehouse', 't_warehouse', and 'item_code'
-        modified_data = [{"name": item["name"], "posting_date": item["posting_date"], "custom_locations": item["custom_locations"], "docstatus": item["docstatus"]} for item in data]
-        response["data"] = modified_data
-
-    if items is not None:
-        response["items"] = items
-
-    if message is not None:
-        response["message"] = message
+        modified_data = []
+        for item in data:
+            modified_item = {
+                "name": item["name"],
+                "posting_date": item["posting_date"],
+                "custom_locations": item["custom_locations"],
+                "docstatus": item["docstatus"],
+                "items": [{"s_warehouse": item["s_warehouse"], "t_warehouse": item["t_warehouse"], "item_code": item["item_code"]}]
+            }
+            modified_data.append(modified_item)
+        response["message"]["data"] = modified_data
 
     if exec_time is not None:
-        response["exec_time"] = exec_time
+        response["message"]["exec_time"] = exec_time
+
+    if message is not None:
+        response["message"]["error"] = message
 
     return response
