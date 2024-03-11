@@ -230,10 +230,26 @@ doc_events = {
 	},
 }
 # All fields 
+# fixtures = [
+# 	{
+# 		"dt": "Custom Field",
+# 		"filters": [["module", "in", ["sejal_mumbai"]]],
+# 	},
+# 	{"dt": "Property Setter", "filters": [["module", "in", ["sejal_mumbai"]]]},
+# ]
+
+
 fixtures = [
 	{
 		"dt": "Custom Field",
-		"filters": [["module", "in", ["sejal_mumbai"]]],
-	},
-	{"dt": "Property Setter", "filters": [["module", "in", ["sejal_mumbai"]]]},
+		"filters": [
+			[
+				"name",
+				"in",
+				[
+					"Stock Entry-custom_locations",
+				],
+			]
+		],
+	}
 ]
