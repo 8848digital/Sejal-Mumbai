@@ -98,10 +98,12 @@ def name_specific_stock_entry(kwargs):
         data = frappe.db.sql(
             f"""
             SELECT
+                
                 se.name,
                 se.posting_date,
                 se.custom_locations,
                 se.docstatus,
+                sed.idx,
                 sed.s_warehouse,
                 sed.t_warehouse,
                 sed.item_code,
