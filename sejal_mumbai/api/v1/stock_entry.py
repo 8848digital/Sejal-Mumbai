@@ -81,7 +81,6 @@ def get_stock_entry(kwargs):
     return response
 
 
-
 @frappe.whitelist(allow_guest=True)
 def name_specific_stock_entry(kwargs):
     name = kwargs.get("name")
@@ -150,4 +149,33 @@ def build_response(status, data=None, items=None, message=None, exec_time=None):
     if message is not None:
         response["error"] = message
 
+    return response
+
+
+
+@frappe.whitelist(allow_guest=True)
+def list_warehouse(kwargs):
+    try:
+        data = frappe.db.sql(
+            f"""
+            SELECT
+            w.name AS id,
+            w.custom_store_location AS name    
+            FROM
+                `tabWarehouse` AS w
+            ORDER BY
+                w.modified desc
+            """,
+            as_dict=True,
+        )
+        response = {
+            "status": "success",
+            "data": data
+        }
+    except Exception as e:
+        response = {
+            "status": "error",
+            "message": str(e)
+        }
+        
     return response

@@ -82,7 +82,8 @@ class V1:
 			"stock_entry": [
 				"create_stock_entry",
 				"get_stock_entry",
-				"name_specific_stock_entry"
+				"name_specific_stock_entry",
+				"list_warehouse"
 				
 			],
 		}
