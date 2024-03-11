@@ -147,7 +147,7 @@ def build_response(status, data=None, items=None, message=None, exec_time=None):
                 "posting_date": item["posting_date"],
                 "custom_locations": item["custom_locations"],
                 "docstatus": item["docstatus"],
-                "items": [{"s_warehouse": item["s_warehouse"], "t_warehouse": item["t_warehouse"], "item_code": item["item_code"]}]
+                "items": [{"idx": item["idx"], "s_warehouse": item["s_warehouse"], "t_warehouse": item["t_warehouse"], "item_code": item["item_code"]}]
             }
             modified_data.append(modified_item)
         response["message"]["data"] = modified_data
