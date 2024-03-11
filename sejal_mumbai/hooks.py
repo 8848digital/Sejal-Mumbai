@@ -230,6 +230,10 @@ doc_events = {
 	},
     "Warehouse":{
         "autoname": "sejal_mumbai.doc_events.warehouse.autoname"
+	},
+     "Stock Entry":{
+        "autoname": "sejal_mumbai.doc_events.stock_entry.autoname",
+        "validate": "sejal_mumbai.doc_events.stock_entry.number_set"
 	}
 }
 
