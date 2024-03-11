@@ -15,6 +15,8 @@ import sejal_mumbai.api.v1.sales as sales
 import sejal_mumbai.api.v1.sales_return as sales_return
 import sejal_mumbai.api.v1.report as report
 import sejal_mumbai.api.v1.barcode as barcode
+import sejal_mumbai.api.v1.stock_entry as stock_entry
+
 
 
 class V1:
@@ -76,6 +78,12 @@ class V1:
 				"print_barcode",
 				"get_multiple_specific_print_barcode",
 				"get_karigar_and_client_name",
+			],
+			"stock_entry": [
+				"create_stock_entry",
+				"get_stock_entry",
+				"name_specific_stock_entry"
+				
 			],
 		}
 
