@@ -228,7 +228,12 @@ doc_events = {
 		"autoname": "sejal_mumbai.doc_events.delivery_note.autoname",
 		"validate": "sejal_mumbai.doc_events.purchase_receipt.number_set",
 	},
+    "Warehouse":{
+        "autoname": "sejal_mumbai.doc_events.warehouse.autoname"
+	}
 }
+
+
 # All fields 
 # fixtures = [
 # 	{

@@ -49,6 +49,56 @@ def error_response(message):
 
 
 @frappe.whitelist(allow_guest=True)
+def put_stock_entry(kwargs):
+    try:
+        name = kwargs.get("name")
+        posting_date = kwargs.get("posting_date")
+        custom_locations = kwargs.get("custom_locations")
+        stock_entry_type = kwargs.get("stock_entry_type")
+        items = kwargs.get("items")
+       
+        # Get the Stock Entry document
+        client = frappe.get_doc("Stock Entry", name)
+        client.posting_date = posting_date
+        client.custom_locations = custom_locations
+        client.stock_entry_type = stock_entry_type
+
+        # Clear existing items before appending new ones
+        client.items = []
+        
+        # Append new items
+        for item in items:
+            s_warehouse = item.get("source_warehouse")
+            t_warehouse = item.get("target_warehouse")
+            item_code = item.get("item_code")
+            qty = item.get("qty")
+            allow_zero_valuation_rate = item.get("allow_zero_valuation_rate")
+
+            client.append("items", {
+                "s_warehouse": s_warehouse,
+                "t_warehouse": t_warehouse,
+                "item_code": item_code,
+                "qty": qty,
+                "allow_zero_valuation_rate": allow_zero_valuation_rate
+            })
+
+        # Save the Stock Entry document after all items are appended
+        client.save()
+        response_data = {
+            "status": "success",
+            "message": "Stock Entry updated successfully.",
+            "client_id": client.name,
+        }
+        return {"status": "success", "data": response_data}
+    except Exception as e:
+        frappe.logger("error").exception(e)
+        return error_response(str(e))
+
+def error_response(message):
+    return {"status": "failed", "message": message}
+
+
+@frappe.whitelist(allow_guest=True)
 def get_stock_entry(kwargs):
     try:
         data = frappe.db.sql(
@@ -159,8 +209,7 @@ def list_warehouse(kwargs):
         data = frappe.db.sql(
             f"""
             SELECT
-            w.name AS id,
-            w.custom_store_location AS name    
+            w.name     
             FROM
                 `tabWarehouse` AS w
             ORDER BY
