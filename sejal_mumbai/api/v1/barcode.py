@@ -576,3 +576,6 @@ def get_karigar_and_client_name(kwargs):
 	except Exception as e:
 		frappe.log_error(title=_("API Error"), message=str(e))
 		return build_response("error", message=_("An error occurred while fetching data."))
+
+
+

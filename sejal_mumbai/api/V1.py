@@ -84,7 +84,9 @@ class V1:
 				"put_stock_entry",
 				"get_stock_entry",
 				"name_specific_stock_entry",
-				"list_warehouse"
+				"list_warehouse",
+				"create_amended_stock_entry",
+				"delete_stock_entry"
 				
 			],
 		}
