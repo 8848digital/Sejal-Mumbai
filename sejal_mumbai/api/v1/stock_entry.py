@@ -180,17 +180,26 @@ def build_response(status, data=None, items=None, message=None, exec_time=None):
     response = {"status": status}
 
     if data is not None:
-        modified_data = []
+        grouped_data = {}
         for item in data:
-            modified_item = {
-                "name": item["name"],
-                "posting_date": item["posting_date"],
-                "custom_locations": item["custom_locations"],
-                "docstatus": item["docstatus"],
-                "items": [{"idx": item["idx"], "source_warehouse": item["source_warehouse"], "target_warehouse": item["target_warehouse"], "item_code": item["item_code"], "qty": item["qty"], "allow_zero_valuation_rate": item["allow_zero_valuation_rate"]}]
-            }
-            modified_data.append(modified_item)
-        response["data"] = modified_data
+            if item["name"] not in grouped_data:
+                grouped_data[item["name"]] = {
+                    "name": item["name"],
+                    "posting_date": item["posting_date"],
+                    "custom_locations": item["custom_locations"],
+                    "docstatus": item["docstatus"],
+                    "items": []
+                }
+            grouped_data[item["name"]]["items"].append({
+                "idx": item["idx"],
+                "source_warehouse": item["source_warehouse"],
+                "target_warehouse": item["target_warehouse"],
+                "item_code": item["item_code"],
+                "qty": item["qty"],
+                "allow_zero_valuation_rate": item["allow_zero_valuation_rate"]
+            })
+        
+        response["data"] = list(grouped_data.values())
 
     if exec_time is not None:
         response["exec_time"] = exec_time
@@ -199,6 +208,9 @@ def build_response(status, data=None, items=None, message=None, exec_time=None):
         response["error"] = message
 
     return response
+
+
+
 
 
 
