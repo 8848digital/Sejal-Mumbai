@@ -163,11 +163,12 @@ def name_specific_stock_entry(kwargs):
         )
 
         items = [{"source_warehouse": item["source_warehouse"], "target_warehouse": item["target_warehouse"], "item_code": item["item_code"], "qty": item["qty"], "allow_zero_valuation_rate": item["allow_zero_valuation_rate"]} for item in data]
-
-        return build_response("success", data=data, items=items, exec_time="0.0008 seconds")
+        
+        return builds_response(status= "success" ,data=data, items=items,message=None, exec_time="0.0008 seconds")
+        
     except Exception as e:
-        frappe.log_error(title=_("API Error"), message=str(e))
-        return build_response("error", exec_time="0.0038 seconds")
+        frappe.log_error(title=_("stock_entry"), message=str(e))
+        return build_response("error", message=str(e))
 
 def get_conditions(name=None):
     conditions = ""
@@ -176,12 +177,11 @@ def get_conditions(name=None):
 
     return conditions
 
-def build_response(status, data=None, items=None, message=None, exec_time=None):
+def builds_response(status, data=None, items=None, message=None, exec_time=None):
     response = {"status": status}
-
     if data is not None:
         grouped_data = {}
-        for item in data:
+        for item in data:  
             if item["name"] not in grouped_data:
                 grouped_data[item["name"]] = {
                     "name": item["name"],
@@ -198,16 +198,19 @@ def build_response(status, data=None, items=None, message=None, exec_time=None):
                 "qty": item["qty"],
                 "allow_zero_valuation_rate": item["allow_zero_valuation_rate"]
             })
-        
+
         response["data"] = list(grouped_data.values())
 
     if exec_time is not None:
         response["exec_time"] = exec_time
 
     if message is not None:
-        response["error"] = message
+        response["message"] = message
 
     return response
+
+
+
 
 @frappe.whitelist(allow_guest=True)
 def list_warehouse(kwargs):
