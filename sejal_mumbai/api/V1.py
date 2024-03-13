@@ -87,7 +87,7 @@ class V1:
 				"list_warehouse",
 				"create_amended_stock_entry",
 				"delete_stock_entry",
-				"source_warehouse_item_code"
+				"source_warehouse_item_code",
 				
 			],
 		}

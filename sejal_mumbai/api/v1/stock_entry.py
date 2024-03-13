@@ -133,7 +133,9 @@ def get_stock_entry(kwargs):
 @frappe.whitelist(allow_guest=True)
 def name_specific_stock_entry(kwargs):
     name = kwargs.get("name")
+    
     conditions = get_conditions(name)
+   
     try:
         data = frappe.db.sql(
             f"""
@@ -160,6 +162,7 @@ def name_specific_stock_entry(kwargs):
             """,
             as_dict=True,
         )
+        
 
         items = [{"source_warehouse": item["source_warehouse"], "target_warehouse": item["target_warehouse"], "item_code": item["item_code"], "qty": item["qty"], "allow_zero_valuation_rate": item["allow_zero_valuation_rate"]} for item in data]
         
@@ -310,7 +313,7 @@ def delete_stock_entry(kwargs):
             }
     else:
         response_data = {
-            "message": f"Challan {name} not found.",
+            "message": f"Stock Entry {name} not found.",
             "status": "error"
         }
 
@@ -333,7 +336,7 @@ def build_response(status, data=None, message=None):
 @frappe.whitelist(allow_guest=True)
 def source_warehouse_item_code(kwargs):
     warehouse = kwargs.get("warehouse")
-    conditions = get_conditions(warehouse)
+    conditions = get_conditionse(warehouse)
     data = frappe.db.sql(
         f"""
         SELECT sle.warehouse, sle.item_code
@@ -343,9 +346,13 @@ def source_warehouse_item_code(kwargs):
         """,
         as_dict=True,
     )
-    return data
+    response = {
+        "status": "success",
+        "data": data
+    }
+    return response
 
-def get_conditions(warehouse=None):
+def get_conditionse(warehouse=None):
     conditions = ""
     if warehouse:
         conditions += f' AND (sle.item_code = "{warehouse}" OR sle.warehouse = "{warehouse}") '
