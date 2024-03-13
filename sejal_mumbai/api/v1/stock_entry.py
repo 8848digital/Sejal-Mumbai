@@ -47,7 +47,6 @@ def error_response(message):
     return {"status": "failed", "message": message}
 
 
-
 @frappe.whitelist(allow_guest=True)
 def put_stock_entry(kwargs):
     try:
@@ -328,3 +327,29 @@ def build_response(status, data=None, message=None):
         response["message"] = message
 
     return response
+
+
+
+@frappe.whitelist(allow_guest=True)
+def source_warehouse_item_code(kwargs):
+    warehouse = kwargs.get("warehouse")
+    conditions = get_conditions(warehouse)
+    data = frappe.db.sql(
+        f"""
+        SELECT sle.warehouse, sle.item_code
+        FROM `tabStock Ledger Entry` AS sle
+        WHERE docstatus = 1 AND qty_after_transaction = 1
+        {conditions}
+        """,
+        as_dict=True,
+    )
+    return data
+
+def get_conditions(warehouse=None):
+    conditions = ""
+    if warehouse:
+        conditions += f' AND (sle.item_code = "{warehouse}" OR sle.warehouse = "{warehouse}") '
+    return conditions
+
+
+

@@ -14,3 +14,8 @@ def number_set(doc, method):
         doc.custom_number = second_last + "-" + last
     else:
         doc.custom_number = doc.name.split("-")[-1]
+
+
+
+
+
