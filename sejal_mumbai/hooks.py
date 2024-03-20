@@ -238,16 +238,21 @@ doc_events = {
 }
 
 
+# fixtures = [
+# 	{
+# 		"dt": "Custom Field","filters": [["module", "in", ["sejal_mumbai"]]],
+# 	},
+# 	{
+#         "dt": "Property Setter", "filters": [["module", "in", ["sejal_mumbai"]]],
+#     },
+#     {
+#         "dt": "Report", "filters": [["module", "in", ["sejal_mumbai"]]],
+#     },
+# ]
+
+
 fixtures = [
 	{
-		"dt": "Custom Field","filters": [["module", "in", ["sejal_mumbai"]]],
+		"dt": "Custom Field","filters": [["name", "in", ["Item-custom_karigar"]]],
 	},
-	{
-        "dt": "Property Setter", "filters": [["module", "in", ["sejal_mumbai"]]],
-    },
-    {
-        "dt": "Report", "filters": [["module", "in", ["sejal_mumbai"]]],
-    },
-]
-
-
+ ]
