@@ -216,6 +216,19 @@ def upload_image(dt=None, dn=None):
 		return file_doc
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 import frappe
 from frappe import _
 from frappe.utils.response import build_response
@@ -753,13 +766,7 @@ def get_specific_kundan_purchase_receipt(kwargs):
 
 		# Add your condition to the filters
 		filters["docstatus"] = ["in", [0, 1, 2]]
-		filters["name"] = [
-			"not in",
-			frappe.db.sql_list(
-				"""SELECT amended_from FROM `tabPurchase Receipt`
-                                                         WHERE amended_from IS NOT NULL"""
-			),
-		]
+		filters["name"] = ["not in",frappe.db.sql_list("""SELECT amended_from FROM `tabPurchase Receipt`WHERE amended_from IS NOT NULL"""),]
 
 		our_application = frappe.get_list(
 			"Purchase Receipt",

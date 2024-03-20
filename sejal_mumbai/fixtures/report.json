@@ -1,0 +1,283 @@
+[
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2024-03-12 18:51:19.292930",
+  "module": "sejal_mumbai",
+  "name": "Stock Entry",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Stock Ledger Entry",
+  "reference_report": null,
+  "report_name": "Stock Entry",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Stock Entry",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Stock Entry",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Stock Entry",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing Manager"
+   },
+   {
+    "parent": "Stock Entry",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2024-03-20 10:58:29.377721",
+  "module": "sejal_mumbai",
+  "name": "Barcode",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Purchase Receipt",
+  "reference_report": null,
+  "report_name": "Barcode",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Barcode",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "Barcode",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   },
+   {
+    "parent": "Barcode",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Barcode",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Barcode",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Guest"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2024-03-20 10:59:03.471508",
+  "module": "sejal_mumbai",
+  "name": "AG Report",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Purchase Receipt",
+  "reference_report": null,
+  "report_name": "AG Report",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "AG Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "AG Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase Manager"
+   },
+   {
+    "parent": "AG Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2024-03-20 10:59:25.331094",
+  "module": "sejal_mumbai",
+  "name": "Daily Qty Status",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Purchase Receipt",
+  "reference_report": null,
+  "report_name": "Daily Qty Status",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Daily Qty Status",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "Daily Qty Status",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   },
+   {
+    "parent": "Daily Qty Status",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Daily Qty Status",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Daily Qty Status",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Guest"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": "frappe.query_reports[\"Item Status Report\"] = {\n    \"filters\": [\n        {\n            \"fieldname\": \"name\",\n            \"label\": \"Item\",\n            \"fieldtype\": \"Link\",\n            \"options\": \"Item\"\n        },\n         {\n            \"fieldname\": \"voucher_no\",\n            \"label\": \"Voucher\",\n            \"fieldtype\": \"Data\",\n          \n        },\n          {\n\t\t\tfieldname: \"from_date\",\n\t\t\tlabel: __(\"From Date\"),\n\t\t\tfieldtype: \"Date\",\n\t\t},\n\t\t{\n\t\t\tfieldname: \"to_date\",\n\t\t\tlabel: __(\"To Date\"),\n\t\t\tfieldtype: \"Date\",\n\t\t},\n        \n    ],\n    \"formatter\": function(value, row, column, data, default_formatter) {\n        value = default_formatter(value, row, column, data);\n        console.log(column.fieldname)\n        if (column.fieldname == \"in_qty\" && data.in_qty == 1)\n        {\n        value = \"<span style='color:Green'>\" + value + \"</span>\";\n        }\n        if (column.fieldname == \"out_qty\" && data.out_qty == -1)\n        {\n        value = \"<span style='color:red'>\" + value + \"</span>\";\n        }\n       \n        return value;\n    },\n   \n};\n",
+  "json": "{}",
+  "letter_head": null,
+  "modified": "2024-03-20 10:59:44.336425",
+  "module": "sejal_mumbai",
+  "name": "Item Status Report",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Item",
+  "reference_report": null,
+  "report_name": "Item Status Report",
+  "report_script": "columns = [\n    _(\"Date\") + \"::110\",\n    _(\"Voucher\") + \"::100\",\n    _(\"In Qty\") + \"::100\",\n    _(\"Out Qty\") + \"::100\",\n    _(\"Balance Stock Value\") + \"::100\",\n    _(\"PR NET Wt\") + \"::100\",\n    _(\"PR FEW Wt\") + \"::100\",\n    _(\"PR Gross Wt\") + \"::100\",\n    _(\"PR MAT Wt\") + \"::100\",\n    _(\"PR Other\") + \"::100\",\n    _(\"PR Total\") + \"::100\",\n    _(\"Sales Kun Wt\") + \"::100\",\n    _(\"Sales NET Wt\") + \"::100\",\n    _(\"Sales CS Wt\") + \"::100\",\n    _(\"Sales BB Wt\") + \"::100\",\n    _(\"Sales Other Wt\") + \"::100\",\n    _(\"Sales Cs@\") + \"::100\",\n    _(\"Sales Cs Amt@\") + \"::100\",\n    _(\"Sales Kun Pc\") + \"::100\",\n    _(\"Sales Kun@\") + \"::100\",\n    _(\"Sales Kun Amt\") + \"::100\",\n    _(\"Sales Ot @\") + \"::100\",\n    _(\"Sales Ot Amt\") + \"::100\",\n    _(\"Sales Other\") + \"::100\",\n    _(\"Sales Amount\") + \"::100\",\n]\n\nconditions = \"\"\nif filters.name:\n    conditions = \"WHERE item.name = %(name)s\"\nif filters.voucher_no:\n    conditions = \"WHERE sle.voucher_no = %(voucher_no)s\"\n    \n\n\nmydata = frappe.db.sql(f\"\"\"\n    SELECT DISTINCT\n        sle.posting_date,\n        sle.voucher_no,\n        CASE WHEN sle.actual_qty = 1 THEN sle.actual_qty ELSE 0 END AS in_qty,\n        CASE WHEN sle.actual_qty = -1 THEN sle.actual_qty ELSE 0 END AS out_qty,\n        CASE WHEN sle.actual_qty = 1 THEN 1 ELSE 0 END AS in_stock_value,\n       \n        -- Other fields related to Purchase Receipt\n        pri.custom_net_wt as net_wt ,\n        pri.custom_few_wt,\n        pri.custom_gross_wt,\n        pri.custom_mat_wt,\n        pri.custom_other,\n        pri.custom_total,\n        \n        -- Other fields related to Delivery Note (when is_return is 0)\n        CASE WHEN dn.is_return = 0 THEN dni.custom_kun_wt END AS custom_kun_wt,\n        CASE WHEN dn.is_return = 0 THEN dni.custom_net_wt END AS custom_net_wt,\n        CASE WHEN dn.is_return = 0 THEN dni.custom_cs_wt END AS custom_cs_wt,\n        CASE WHEN dn.is_return = 0 THEN dni.custom_bb_wt END AS custom_bb_wt,\n        CASE WHEN dn.is_return = 0 THEN dni.custom_other_wt END AS custom_other_wt,\n        CASE WHEN dn.is_return = 0 THEN dni.custom_cs END AS custom_cs,\n        CASE WHEN dn.is_return = 0 THEN dni.custom_cs_amt END AS custom_cs_amt,\n        CASE WHEN dn.is_return = 0 THEN dni.custom_kun_pc END AS custom_kun_pc,\n        CASE WHEN dn.is_return = 0 THEN dni.custom_kun END AS custom_kun,\n        CASE WHEN dn.is_return = 0 THEN dni.custom_kun_amt END AS custom_kun_amt,\n        CASE WHEN dn.is_return = 0 THEN dni.custom_ot_ END AS custom_ot_,\n        CASE WHEN dn.is_return = 0 THEN dni.custom_ot_amt END AS custom_ot_amt,\n        CASE WHEN dn.is_return = 0 THEN dni.custom_other END AS custom_other,\n        CASE WHEN dn.is_return = 0 THEN dni.custom_amount END AS custom_amount\n        \n    FROM `tabStock Ledger Entry` AS sle\n    LEFT JOIN `tabItem` AS item ON sle.item_code = item.name\n    LEFT JOIN `tabPurchase Receipt` AS pr ON item.custom_purchase_receipt = pr.name AND sle.voucher_no = pr.name\n    LEFT JOIN `tabPurchase Receipt Item` AS pri ON pri.parent = pr.name\n    LEFT JOIN `tabDelivery Note` AS dn ON sle.voucher_no = dn.name\n    LEFT JOIN `tabDelivery Note Item` AS dni ON dni.parent = dn.name AND sle.voucher_no = dn.name\n    {conditions}\n    AND (dn.is_return IS NULL OR dn.is_return = 0)\n   \n    \n    UNION ALL\n    \n    SELECT DISTINCT\n        sle.posting_date,\n        sle.voucher_no,\n        CASE WHEN sle.actual_qty = 1 THEN sle.actual_qty ELSE 0 END AS in_qty,\n        CASE WHEN sle.actual_qty = -1 THEN sle.actual_qty ELSE 0 END AS out_qty,\n        CASE WHEN sle.actual_qty = 1 THEN 1 ELSE 0 END AS in_stock_value,\n        0 AS net_wt,\n        0 AS custom_few_wt,\n        0 AS custom_gross_wt,\n        0 AS custom_mat_wt,\n        0 AS custom_other,\n        0 AS custom_total,\n        dni.custom_kun_wt,\n        dni.custom_net_wt,\n        dni.custom_cs_wt,\n        dni.custom_bb_wt,\n        dni.custom_other_wt,\n        dni.custom_cs,\n        dni.custom_cs_amt,\n        dni.custom_kun_pc,\n        dni.custom_kun,\n        dni.custom_kun_amt,\n        dni.custom_ot_,\n        dni.custom_ot_amt,\n        dni.custom_other,\n        dni.custom_amount\n        \n    FROM `tabStock Ledger Entry` AS sle\n    LEFT JOIN `tabItem` AS item ON sle.item_code = item.name\n    LEFT JOIN `tabPurchase Receipt` AS pr ON item.custom_purchase_receipt = pr.name AND sle.voucher_no = pr.name\n    LEFT JOIN `tabDelivery Note` AS dn ON sle.voucher_no = dn.name\n    LEFT JOIN `tabDelivery Note Item` AS dni ON dni.parent = dn.name AND sle.voucher_no = dn.name\n    {conditions}\n    AND dn.is_return = 1\n\"\"\", filters)\n\ndata = columns, mydata\n",
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Item Status Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Item Manager"
+   },
+   {
+    "parent": "Item Status Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Item Status Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Item Status Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Sales User"
+   },
+   {
+    "parent": "Item Status Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   },
+   {
+    "parent": "Item Status Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Maintenance User"
+   },
+   {
+    "parent": "Item Status Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   },
+   {
+    "parent": "Item Status Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Item Status Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "All"
+   }
+  ]
+ }
+]

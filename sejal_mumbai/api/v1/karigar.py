@@ -23,19 +23,17 @@ def create_karigar(kwargs):
 
 
 def error_response(err_msg):
-    error_message = "Duplicate entry"  # Default error message
+    error_message = "Duplicate entry"
     if isinstance(err_msg, tuple) and len(err_msg) >= 3:
         error_message = str(
             err_msg[2]
-        )  # Extracting the specific error message from the tuple
-
-        # Extracting "Duplicate entry" message if present
+        )  
         duplicate_entry_index = error_message.find("Duplicate entry")
         if duplicate_entry_index != -1:
             error_message = error_message[duplicate_entry_index:]
         else:
             error_message = (
-                "Duplicate entry"  # If specific message not found, use default message
+                "Duplicate entry"  
             )
     return {"status": "error", "error": error_message}
 
@@ -44,7 +42,6 @@ def error_response(err_msg):
 import frappe
 from frappe import _
 from frappe.utils.response import build_response
-
 
 @frappe.whitelist(allow_guest=True)
 def get_karigar(kwargs):

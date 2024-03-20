@@ -5,11 +5,18 @@
 frappe.query_reports["Stock Entry"] = {
 	"filters": [
 		{
-			fieldname: "warehouse",
-			label: __("Warehouse"),
+			fieldname: "name",
+			label: __("Name"),
 			fieldtype: "Link",
-			options: "Warehouse",
+			options: "Item",
 		},
+		{
+			fieldname: "",
+			label: __("Karigar"),
+			fieldtype: "Link",
+			options: "karigar",
+		},
+
 
 	]
 };
