@@ -46,6 +46,7 @@ def create_purchase_receipt(kwargs):
 					item.item_code = item_name
 					item.stock_uom = "Nos"
 					item.item_group = "All Item Groups"
+					item.custom_karigar = data.get("custom_karigar")
 					item.custom_kun_karigar = row.get("custom_kun_karigar")
 					item.custom_net_wt = row.get("custom_net_wt")
 					item.custom_few_wt = row.get("custom_few_wt")
@@ -90,6 +91,7 @@ def create_purchase_receipt(kwargs):
 							"custom_add_photo": row["custom_add_photo"],
 						},
 					)
+
 					frappe.db.commit()
 					for table_row in row["table"]:
 						if not table_data.get(row["product_code"]):
@@ -176,12 +178,7 @@ def create_purchase_receipt(kwargs):
 			return {"message": f"{purchase_receipt.name}"}
 	except Exception as e:
 		frappe.logger("Create Purchase").exception(e)
-		return error_response(str(e))
-
-
-# except Exception as e:
-#     frappe.logger('PurchaseReceipt').exception(e)
-# return error_response(str(e))
+	return error_response(str(e))
 
 
 def error_response(err_msg):
@@ -190,6 +187,7 @@ def error_response(err_msg):
 
 def item_autoname(doc, method):
 	pass
+
 
 
 @frappe.whitelist(allow_guest=True)
