@@ -201,6 +201,9 @@ def builds_response(status, data=None, items=None, message=None, exec_time=None)
                 "allow_zero_valuation_rate": item["allow_zero_valuation_rate"]
             })
 
+        for entry in grouped_data.values():
+            entry["items"] = sorted(entry["items"], key=lambda x: x["idx"])  # Sort items by idx
+
         response["data"] = list(grouped_data.values())
 
     if exec_time is not None:
