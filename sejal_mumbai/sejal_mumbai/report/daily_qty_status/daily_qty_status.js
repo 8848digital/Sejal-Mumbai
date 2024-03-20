@@ -40,7 +40,7 @@ frappe.query_reports["Daily Qty Status"] = {
             console.log(filters)
             const fromDate = filters.from_date;
             const toDate = filters.to_date;
-            let url = `//${window.location.host}/api/method/sj_antique.sj_antique.report.daily_qty_status.daily_qty_status.report`
+            let url = `//${window.location.host}/api/method/sejal_mumbai.sejal_mumbai.report.daily_qty_status.daily_qty_status.report`
             let isFirstParameter = true;
             Object.entries(filters).forEach(([key, value]) => {
                 if (isFirstParameter) {
