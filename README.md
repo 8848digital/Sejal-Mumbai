@@ -1,4 +1,4 @@
-## sejal_mumbai
+## Sejal Mumbai
 So basically we transfer sales from mumbai (warehouse) to Delhi(warehouse)
 we transfer stocks from one warehouse to another warehouse
 
