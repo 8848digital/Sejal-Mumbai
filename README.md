@@ -1,7 +1,2 @@
 ## sejal_mumbai
-
-sejal_mumbai
-
-#### License
-
-MIT
+So basically we transfer sales from mumbai (warehouse) to Delhi(warehouse)
