@@ -47,6 +47,7 @@ def create_purchase_receipt(kwargs):
 					item.stock_uom = "Nos"
 					item.item_group = "All Item Groups"
 					item.custom_karigar = data.get("custom_karigar")
+					item.custom_warehouse = data.get("store_location")
 					item.custom_kun_karigar = row.get("custom_kun_karigar")
 					item.custom_net_wt = row.get("custom_net_wt")
 					item.custom_few_wt = row.get("custom_few_wt")
