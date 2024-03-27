@@ -1,5 +1,8 @@
 ## Sejal Mumbai
 
+### Introduction
+-It is a Jewlery distributor which sells jewelry to retail and wholesale customers from Mumbai and Delhi establishment.
+
 ## Key Features:
 ### 1. Master
 - Karigar: Display details related to Karigar.
