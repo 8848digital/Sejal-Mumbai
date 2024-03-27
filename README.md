@@ -15,9 +15,9 @@
 - Kundan Karigar: Create, view, track and print purchase receipts for Kundan products.
 - Mangalsutra Karigar : Create, view, track and print purchase receipts for Mangalsutra products
 
-### 3. Sales , Sales Return of (Delivery Notes)
-- Sales : Create and track all the Delivery Notes of purchases of products.
-- Sales Return : Create and track all the Delivery Notes Return of purchases of products or the returns.
+### 3.Sales and Sales Return
+- Sales : Create and track all the Delivery Notes for sales of products.
+- Sales Return : Create and track all the Return against sales of products
 
 ### 4. Report
 - It showcases Daily Quantity Status report where table is divided into two parts. Left side of the table describes all the material details of Purchase Receipt & Delivery Note Returns whereas right side describes all the material details of Delivery Notes.
