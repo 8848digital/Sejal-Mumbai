@@ -24,6 +24,6 @@
 - It showcases the innovative use of QR codes to provide seamless access to item details. Each QR code generated corresponds to a specific item and can be printed in bulk for multiple items.
 
 ### 6. Stock Transfer
-So basically we transfer sales from mumbai (warehouse) to Delhi(warehouse)
+- So basically we transfer sales from mumbai (warehouse) to Delhi(warehouse)
 
-e.g we are transfering Stock from Mumbai to Delhi
+- e.g we are transfering Stock from Mumbai to Delhi
