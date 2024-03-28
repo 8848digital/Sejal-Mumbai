@@ -370,3 +370,30 @@ def get_conditionse(warehouse=None):
 
 
 
+@frappe.whitelist(allow_guest=True)
+def print_stock_entry(kwargs):
+    name = kwargs.get("name")
+    if frappe.db.exists("Stock Entry", name):
+        purchase_receipt_data = frappe.get_doc("Stock Entry", name)
+        print_url = f"{frappe.utils.get_url()}/api/method/frappe.utils.print_format.download_pdf?doctype=Stock%20Entry&name={name}&format=Stock%20Entry&no_letterhead=1&letterhead=No%20Letterhead&settings=%7B%7D&_lang=en"
+        purchase_receipt_table = {
+            "posting_date": purchase_receipt_data.posting_date,
+            "name": purchase_receipt_data.name,
+            "print_url": print_url,
+        }
+        response_data = {"data": [purchase_receipt_table]}
+        return build_response("success", data=response_data)
+    else:
+        return build_response("error", message="Stock Entry not found")
+
+
+
+def build_response(status, data=None, message=None):
+	response = {"status": status}
+	if data is not None:
+		response["data"] = data
+
+	if message is not None:
+		response["message"] = message
+
+	return response
