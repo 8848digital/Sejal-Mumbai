@@ -345,12 +345,12 @@ def source_warehouse_item_code(kwargs):
         SELECT sle.warehouse, sle.item_code
         FROM `tabStock Ledger Entry` AS sle
         WHERE docstatus = 1  
-        AND actual_qty = 1 
+        AND qty_after_transaction = 1 
         AND (sle.warehouse, sle.item_code) NOT IN (
             SELECT warehouse, item_code
             FROM `tabStock Ledger Entry`
             WHERE docstatus = 1  
-            AND actual_qty = -1 
+            AND qty_after_transaction = 0
         )
         {conditions}
         """,
